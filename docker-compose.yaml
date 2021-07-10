@@ -1,10 +1,13 @@
 version: '3.7'
 services:
-  app: # service名
-    build: . # ビルドに使用するDockerfileがあるディレクトリ指定
-    tty: true # コンテナの起動永続化
+  app:
+    build: ./docker/app/
+    tty: true
     volumes:
-      - ./src:/go/src/work # マウントディレクトリ指定
+      - ./src:/go/src/work
+    ports:
+      - 1323:1323
+    command: "go run server.go"
   db:
     image: mysql/mysql-server
     container_name: app_db
@@ -20,5 +23,3 @@ services:
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 3306:3306
-docker-compose:
-  yaml:

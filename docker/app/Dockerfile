@@ -5,5 +5,7 @@ RUN mkdir /go/src/work
 # コンテナログイン時のディレクトリ指定
 WORKDIR /go/src/work
 # ホストのファイルをコンテナの作業ディレクトリに移行
-ADD ../../src /go/src/work
+#ADD ../../src /go/src/work
+ADD . /go/src/work
 
+#RUN go run server.go
