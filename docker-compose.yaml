@@ -3,6 +3,7 @@ services:
   app:
     build: ./docker/app/
     tty: true
+    container_name: echo_app
     volumes:
       - ./src:/go/src/work
     ports:
@@ -10,10 +11,10 @@ services:
     command: "go run server.go"
   db:
     image: mysql/mysql-server
-    container_name: app_db
+    container_name: echo_db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: app_db
+      MYSQL_DATABASE: echo_db
       MYSQL_USER: db_user
       MYSQL_PASSWORD: db_password
       TZ: 'Asia/Tokyo'
