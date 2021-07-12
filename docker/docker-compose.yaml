@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+#  app:
+#    build: ./app/
+#    tty: true
+#    container_name: echo_app
+#    volumes:
+#      - ../:/go/src/work
+#    ports:
+#      - 1323:1323
+##    command: "go run server.go"
+#    depends_on:
+#      - db
+  db:
+    container_name: automation_db
+    build: ./db/
+    environment:
+      MYSQL_ROOT_PASSWORD: db_password
+      MYSQL_DATABASE: automation_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./db/data:/var/lib/mysql
+    ports:
+      - 3306:3306

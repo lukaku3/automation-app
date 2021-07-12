@@ -26,5 +26,9 @@ pnpm-debug.log*
 /dist_electron
 
 #--
+docker/db/data/
+!docker/db/data/.empty 
+
+#--
 AdminLTE-3.1.0/
 
